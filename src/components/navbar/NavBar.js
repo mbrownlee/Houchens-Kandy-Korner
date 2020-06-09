@@ -4,10 +4,10 @@ import { withRouter } from 'react-router-dom';
 import "./NavBar.css";
 
 const NavBar = props => {
-  // const handleLogout = () => {
-  //   props.clearUser();
-  //   props.history.push('/');
-  // }
+  const handleLogout = () => {
+    props.clearUser();
+    props.history.push('/');
+  }
   return (
     <header>
       <h1 className="site-title">
@@ -15,15 +15,34 @@ const NavBar = props => {
       </h1>
       <nav>
         <ul className="container">
-          <li>
-            <NavLink exact className="nav-link" to="/productTypes" activeClassName="selected"> Product Type </NavLink>
+        <li>
+            <NavLink exact className="nav-link" to="/" activeClassName="selected"> Login </NavLink>
           </li>
-          <li>
+         
+            {props.hasUser
+            ?  <li>
+            <NavLink exact className="nav-link" to="/productTypes" activeClassName="selected"> Product Types </NavLink>
+          </li> : null}
+          {props.hasUser
+            ?  <li>
+            <NavLink exact className="nav-link" to="/products" activeClassName="selected"> All Products </NavLink>
+          </li> : null}
+          {props.hasUser
+            ?  <li>
             <NavLink exact className="nav-link" to="/locations" activeClassName="selected"> Locations </NavLink>
-          </li>
-          <li>
+          </li> : null}
+          {props.hasUser
+            ?  <li>
                 <NavLink className="nav-link" to="/employees" activeClassName="selected"> Employees </NavLink>
+              </li> : null}  
+              {props.hasUser
+             ? <li>
+                <span className="nav-link" onClick={handleLogout}> Logout </span>
               </li>
+            : <li>
+                <NavLink className="nav-link" to="/" activeClassName="selected">Login</NavLink>
+              </li>}
+              
           {/* {props.hasUser
             ? <li>
                 <NavLink className="nav-link" to="/animals" activeClassName="selected"> Animals </NavLink>
@@ -43,12 +62,12 @@ const NavBar = props => {
               </li>
             : null}
             {props.hasUser
-            ? <li>
+            {/* ? <li>
                 <span className="nav-link" onClick={handleLogout}> Logout </span>
               </li>
             : <li>
                 <NavLink className="nav-link" to="/login" activeClassName="selected">Login</NavLink>
-              </li>} */}
+              </li>} */} 
         </ul>
       </nav>
     </header>
