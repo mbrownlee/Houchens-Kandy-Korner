@@ -5,6 +5,7 @@ import LocationList from "./locations/LocationList";
 import EmployeeList from "./employees/EmployeeList";
 import ProductTypeList from "./products/ProductTypeList";
 import ProductList from "./products/ProductList";
+import ProductForm from "./products/ProductForm";
 import ProductDetail from "./products/ProductDetail";
 import EmployeeCard from "./employees/EmployeeCard";
 
@@ -51,6 +52,18 @@ const ApplicationViews = (props) => {
               {...props}
             />
           );
+        }}
+      />
+      <Route
+        path="/products/new"
+        render={(props) => {
+          return <ProductForm {...props} />;
+        }}
+      />
+      <Route
+        path="/products/:productId(\d+)/edit"
+        render={(props) => {
+          return <ProductForm {...props} />;
         }}
       />
       <Route
