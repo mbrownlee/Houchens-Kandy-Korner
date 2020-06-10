@@ -1,0 +1,17 @@
+.edit button{
+    background-color: gold;
+    color: black;
+    border-radius: 6px;
+    width: 100px;
+    height: 50px;
+    float: left
+}
+
+.delete button {
+    background-color: red;
+    color: black;
+    border-radius: 6px;
+    width: 100px;
+    height: 50px;
+    float: right
+}

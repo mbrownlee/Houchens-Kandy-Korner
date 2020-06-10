@@ -11,9 +11,24 @@ export default {
     },
     getWithProductType(id) {
       return fetch(
-        `${remoteURL}/products/${id}?_embed=productTypes`
+        `${remoteURL}/products/${id}?_expand=productType`
       ).then((result) => result.json());
     },
+ 
+    post(newProduct) {
+      return fetch(`${remoteURL}/products`, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newProduct)
+      }).then(result => result.json())
+  },
+  delete(id) {
+    return fetch(`${remoteURL}/products/${id}`, {
+      method: "DELETE",
+    }).then((result) => result.json());
+  },
     update(editedProduct) {
       return fetch(`${remoteURL}/products/${editedProduct.id}`, {
         method: "PUT",

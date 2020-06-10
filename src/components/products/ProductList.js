@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 //import the components we will need
 import ProductCard from "./ProductCard";
 import ProductManager from "../../modules/ProductManager";
-// import "./EmployeeList.css"
+import "./ProductList.css"
 
 const ProductList = (props) => {
   // The initial state is an empty array
@@ -29,6 +29,17 @@ const ProductList = (props) => {
   // Finally we use map() to "loop over" the animals array to show a list of animal cards
   return (
     <>
+       <section className="section-content">
+        <button
+          type="button"
+          className="btn"
+          onClick={() => {
+            props.history.push("/products/new");
+          }}
+        >
+          Add New Product
+        </button>
+      </section> 
       <div className="container-cards">
         {products.map((product) => (
           <ProductCard
@@ -39,17 +50,6 @@ const ProductList = (props) => {
           />
         ))}
       </div>
-      {/* <section className="section-content">
-        <button
-          type="button"
-          className="btn"
-          onClick={() => {
-            props.history.push("/employees/new");
-          }}
-        >
-          New Employee
-        </button>
-      </section> */}
     </>
   );
 };

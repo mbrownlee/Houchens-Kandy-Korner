@@ -10,6 +10,7 @@ const NavBar = props => {
   }
   return (
     <header>
+      <div className="img">
       <h1 className="site-title">
         Houchens' Kandy Korner
       </h1>
@@ -70,6 +71,7 @@ const NavBar = props => {
               </li>} */} 
         </ul>
       </nav>
+      </div>
     </header>
   );
 };
