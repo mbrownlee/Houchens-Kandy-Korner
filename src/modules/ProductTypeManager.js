@@ -9,17 +9,10 @@ export default {
     getAll() {
       return fetch(`${remoteURL}/productTypes`).then((result) => result.json());
     },
-  //   getWithEmployees(id) {
-  //     return fetch(
-  //       `${remoteURL}/locations/${id}?_embed=employees`
-  //     ).then((result) => result.json());
-  //   },
-  //   update(editedLocation) {
-  //     return fetch(`${remoteURL}/locations/${editedLocation.id}`, {
-  //       method: "PUT",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(editedLocation),
-  //     }).then((data) => data.json());
+    getByProduct(productId) {
+      return fetch(`${remoteURL}/productLocations?_expand=product&_expand=location&productId=${productId}`).then((result) =>
+      result.json()
+    );
+    }
+  
     }

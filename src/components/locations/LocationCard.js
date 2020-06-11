@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 
 const LocationCard = (props) => {
   return (
@@ -15,18 +15,6 @@ const LocationCard = (props) => {
           <br />
           {props.locay.phone}
         </address>
-
-        {/* <Link to={`/locations/${props.locay.id}`}> */}
-          {/* <button>Details</button>
-        </Link>
-        <button
-          type="button"
-          onClick={() =>
-            props.history.push(`/location/${props.locay.id}/edit`)
-          }
-        >
-          Edit
-        </button> */}
       </div>
     </div>
   );

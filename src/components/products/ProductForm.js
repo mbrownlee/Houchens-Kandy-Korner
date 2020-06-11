@@ -60,7 +60,7 @@ const ProductForm = (props) => {
     if (props.match.params.productId) {
       ProductManager.get(props.match.params.productId).then(setProduct);
     }
-  }, [props.match.params.productId]);
+  }, []);
   return (
     <>
       <form>

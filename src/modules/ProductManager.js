@@ -14,6 +14,11 @@ export default {
         `${remoteURL}/products/${id}?_expand=productType`
       ).then((result) => result.json());
     },
+    getByProductTypeId(productTypeId) {
+      return fetch(
+        `${remoteURL}/products?productTypeId=${productTypeId}`).then((result) => result.json())
+      
+    },
  
     post(newProduct) {
       return fetch(`${remoteURL}/products`, {

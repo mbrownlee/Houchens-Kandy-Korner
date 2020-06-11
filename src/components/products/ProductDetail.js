@@ -5,24 +5,29 @@ import "./ProductDetail.css";
 
 const ProductDetail = (props) => {
   const [product, setProduct] = useState({ productType: {} });
-  // const [productTypes, setProductTypes] = useState([]);
+  const [productTypesWithLocation, setProductTypesWithLocation] = useState([]);
 
   useEffect(() => {
     ProductManager.getWithProductType(props.match.params.productId).then(
       (APIResult) => {
         console.log(APIResult, "what you want");
         setProduct(APIResult);
-        //   setProductTypes(APIResult.productType);
       }
     );
   }, [props.match.params.productId]);
 
+  useEffect(() => {
+    ProductTypeManager.getByProduct(props.match.params.productId).then(
+      (APIResult) => {
+        setProductTypesWithLocation(APIResult);
+      }
+    );
+  }, [props.match.params.prodctId]);
   const handleDelete = () => {
     ProductManager.delete(props.productId).then(() =>
       props.history.push("/products")
     );
   };
-
 
   return (
     <div className="card">
@@ -30,7 +35,15 @@ const ProductDetail = (props) => {
         <h1>{product.name}</h1>
         <h3>Price: {product.price}</h3>
         <p>Type of Candy: {product.productType.name} </p>
-        {/* <p>Locations Sold: {product.location.name}</p> */}
+        <p>
+          Locations Sold:{" "}
+          {productTypesWithLocation
+            .map((productTypeWithLocation) => {
+              return productTypeWithLocation.location.name;
+            })
+            .join(", ")}
+        </p>
+
         <div className="edit">
           <button
             type="button"

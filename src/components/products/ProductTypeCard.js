@@ -1,29 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./ProductType.css";
 
 const productTypeCard = (props) => {
   return (
     <div className="card">
       <div className="productTypeCard-content">
-      <picture className="photo">
-          <img src={require("./candy.jpeg")} alt="Candy" />
-        </picture>
-        <h2>
-          {props.productType.name}
-          </h2>
-
-        {/* <Link to={`/locations/${props.locay.id}`}> */}
-          {/* <button>Details</button>
-        </Link>
         <button
-          type="button"
-          onClick={() =>
-            props.history.push(`/location/${props.locay.id}/edit`)
-          }
+          className="type_btn"
+          onClick={() => {
+            props.history.push(`/productTypes/${props.productType.id}`);
+          }}
         >
-          Edit
-        </button> */}
+          {props.productType.name}
+        </button>
       </div>
     </div>
   );

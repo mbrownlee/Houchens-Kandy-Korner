@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import NavBar from "./navbar/NavBar";
 import ApplicationViews from "./ApplicationViews";
-import './Kandy.css';
+import "./Kandy.css";
 
 function Kandy() {
   const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
   const [hasUser, setHasUser] = useState(isAuthenticated());
 
-  const setUser = user => {
+  const setUser = (user) => {
     sessionStorage.setItem("credentials", JSON.stringify(user));
     setHasUser(isAuthenticated());
   };
@@ -18,18 +18,12 @@ function Kandy() {
     setHasUser(isAuthenticated());
   };
 
-
   return (
     <>
       <NavBar hasUser={hasUser} clearUser={clearUser} />
-      <ApplicationViews
-        hasUser={hasUser}
-        setUser={setUser}
-        // checkedBox={checkedBox}
-        // setCheckedBox={setCheckedBox}
-      />
+      <ApplicationViews hasUser={hasUser} setUser={setUser} />
     </>
   );
-};
-  
-  export default Kandy;
+}
+
+export default Kandy;

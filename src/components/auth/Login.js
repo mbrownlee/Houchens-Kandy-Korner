@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const Login = (props) => {
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
-    
   });
 
   const handleFieldChange = (evt) => {
@@ -19,14 +18,6 @@ const Login = (props) => {
     props.setUser(credentials);
     props.history.push("/productTypes");
   };
-
-//   const trackCheckedBox = () => {
-//     if (!props.checkedBox) {
-//       props.setCheckedBox(true);
-//     } else if (props.checkedBox) {
-//       props.setCheckedBox(false);
-//     }
-//   };
 
   return (
     <form onSubmit={handleLogin}>
@@ -53,12 +44,6 @@ const Login = (props) => {
           <label htmlFor="inputPassword">Password</label>
         </div>
         <button type="submit">Sign in</button>
-        {/* <label htmlFor="checkedBox">Remember Me</label>
-        <input
-          onClick={trackCheckedBox}
-          id="checkedBox"
-          type="checkbox"
-        ></input> */}
       </fieldset>
     </form>
   );
