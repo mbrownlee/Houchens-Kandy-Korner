@@ -1,4 +1,4 @@
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import React from "react";
 import Login from "./auth/Login";
 import LocationList from "./locations/LocationList";
@@ -7,20 +7,13 @@ import ProductTypeList from "./products/ProductTypeList";
 import ProductList from "./products/ProductList";
 import ProductForm from "./products/ProductForm";
 import ProductDetail from "./products/ProductDetail";
-import EmployeeCard from "./employees/EmployeeCard";
+import ProductTypeDetail from "./products/ProductTypeDetail";
 
 const ApplicationViews = (props) => {
   const hasUser = props.hasUser;
   const setUser = props.setUser;
   return (
     <React.Fragment>
-      {/* <Route
-          exact
-          path="/"
-          render={props => {
-            return <Home />;
-          }}
-        /> */}
       <Route
         exact
         path="/"
@@ -30,9 +23,16 @@ const ApplicationViews = (props) => {
       />
 
       <Route
+        exact
         path="/productTypes"
         render={(props) => {
           return <ProductTypeList {...props} />;
+        }}
+      />
+      <Route
+        path="/productTypes/:productTypeId"
+        render={(props) => {
+          return <ProductTypeDetail {...props} />;
         }}
       />
       <Route
